@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"sync/atomic"
 	"time"
 )
 
@@ -10,7 +11,7 @@ import (
  * 保证goroutine执行
  */
 func main() {
-	main2()
+	main3()
 }
 
 /**
@@ -43,4 +44,30 @@ func main2() {
 		fmt.Println("我是接收的数据： " + strconv.Itoa(i))
 	}
 	close(chans)
+}
+
+/**
+ * 保证按顺序执行
+ */
+func main3() {
+	var count uint32 = 0
+	trigger := func(i uint32, fn func()) {
+		for {
+			if n := atomic.LoadUint32(&count); n == i {
+				fn()
+				atomic.AddUint32(&count, 1)
+				break
+			}
+			time.Sleep(time.Nanosecond * 10)
+		}
+	}
+	for i := uint32(0); i < 10; i++ {
+		go func(i uint32) {
+			fn := func() {
+				fmt.Println(i)
+			}
+			trigger(i, fn)
+		}(i)
+	}
+	time.Sleep(time.Second * 5)
 }
