@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 // 最近之人最大, 每个最大
 // 9

@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 // 位图
 func lengthOfLongestSubstring(s string) int {

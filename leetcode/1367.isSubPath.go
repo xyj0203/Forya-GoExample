@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 //   遍历 树 如果节点相等， 则遍历子节点
 // 			  节点不相等， 则继续遍历子节点， 重置指针为头指针直到 head == nil
