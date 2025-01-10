@@ -34,6 +34,7 @@ func main() {
 func createClazz() int {
 	chapterID := createChapter()
 	courseID := createCourse()
+	// 请求
 
 	// 示例 JSON 数据
 	jsonData := `{"type":1,"title":"无本人-课程","cover_img":"","course_id":"","chapters":[{"id":310,"course_ids":["815911b8976411ef87be0242ac170017"]}],"description":"","category_id":"63f00abada8511e9a2dd0242ac180006","is_reminded":false,"required_privilege_type":1,"optional_privilege_type":2,"allow_accelerate":1,"pop_duration":0,"required_privileges":[{"id":"b0e48dd6ff3f11e8a178787b8aca2306","model":"staff","name":"cattyhuang(黄荣敏)","display_name":"cattyhuang(黄荣敏)","type":"staff","is_resigned":false}],"optional_privileges":[],"start_reminded_at":null,"end_reminded_at":null,"interval":null,"allow_comment":true,"credential":{"cer_id":"","title":"","enabled":false,"is_notify":false},"enable_credit":false,"is_chapter_hidden":false,"point_plus":{"enabled":false,"plus":0},"enable_ai_video_text":false,"enable_ai_clazz_assistance":false,"tags":[]}`
